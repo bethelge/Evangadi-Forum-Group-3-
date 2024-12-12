@@ -8,10 +8,12 @@ const cors = require("cors");
 app.use(cors());
 // db connection
 const dbConnection = require("./db/dbConfig");
-
+// user routes middleware
+const userRoutes = require("./routes/userRoute")
 // json middleware to extract json data
 app.use(express.json());
-
+// userRoutes middleware file
+app.use("/api/users", userRoutes)
 async function start() {
   try {
     const result = await dbConnection.execute("select 'test' ");
