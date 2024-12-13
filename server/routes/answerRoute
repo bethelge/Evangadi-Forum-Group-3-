@@ -1,0 +1,8 @@
+const express = require("express");
+const router = express.Router();
+const { postAnswer } = require("../controller/answerController");
+const authMiddleware = require("../middleware/authMiddleware");
+
+router.post("/postAnswers", authMiddleware, postAnswer); // Post a new answer
+
+module.exports = router;
