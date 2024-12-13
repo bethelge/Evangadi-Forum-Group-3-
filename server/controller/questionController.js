@@ -24,6 +24,31 @@ const getAllQuestions = async (req, res) => {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: err.message });
   }
 };
+// Get Single Question by question_id
+const getSingleQuestion = async (req, res) => {
+  const { question_id } = req.params;
+
+  try {
+    const query = `
+        SELECT q.id, q.questionid, q.title, q.description, q.tag, u.username 
+        FROM questions q 
+        JOIN users u ON q.userid = u.userid
+        WHERE q.questionid = ?;
+      `;
+
+    const [result] = await dbConnection.query(query, [question_id]);
+
+    if (result.length === 0) {
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: "Question not found" });
+    }
+
+    res.status(StatusCodes.OK).json(result[0]);
+  } catch (err) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: err.message });
+  }
+};
 // Post a Question
 const postQuestion = async (req, res) => {
   const { title, description, tag } = req.body;
@@ -60,4 +85,4 @@ const postQuestion = async (req, res) => {
   }
 };
 
-module.exports = { getAllQuestions,postQuestion };
+module.exports = { getAllQuestions, getSingleQuestion, postQuestion };
