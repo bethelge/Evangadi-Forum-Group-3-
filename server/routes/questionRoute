@@ -3,11 +3,16 @@ const router = express.Router();
 
 const authMiddleware = require("../middleware/authMiddleware");
 
-const { getAllQuestions, postQuestion } = require("../controller/questionController");
+const {
+  getAllQuestions,
+  getSingleQuestion,
+  postQuestion,
+} = require("../controller/questionController");
 
-
+// get single question
+router.get("/:question_id", authMiddleware, getSingleQuestion);
 // get all the question
-router.get("/",authMiddleware, getAllQuestions);
+router.get("/", authMiddleware, getAllQuestions);
 
 // post a question
 router.post("/", authMiddleware, postQuestion);
