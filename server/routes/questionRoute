@@ -1,0 +1,11 @@
+const express = require("express");
+const router = express.Router();
+
+const authMiddleware = require("../middleware/authMiddleware");
+
+const { postQuestion } = require("../controller/questionController");
+
+// post a question
+router.post("/", authMiddleware, postQuestion);
+
+module.exports = router;
