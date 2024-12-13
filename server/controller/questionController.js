@@ -2,6 +2,28 @@ const { json } = require("express");
 const dbConnection = require("../db/dbConfig");
 const { StatusCodes } = require("http-status-codes");
 
+const getAllQuestions = async (req, res) => {
+  try {
+    const query = `
+        SELECT q.id, q.questionid, q.title, q.description, q.tag, u.username 
+        FROM questions q 
+        JOIN users u ON q.userid = u.userid
+        ORDER BY q.id DESC;
+      `;
+
+    const [results] = await dbConnection.query(query);
+
+    if (results.length === 0) {
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: "No questions found" });
+    }
+
+    res.status(StatusCodes.OK).json(results);
+  } catch (err) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: err.message });
+  }
+};
 // Post a Question
 const postQuestion = async (req, res) => {
   const { title, description, tag } = req.body;
@@ -38,4 +60,4 @@ const postQuestion = async (req, res) => {
   }
 };
 
-module.exports = { postQuestion };
+module.exports = { getAllQuestions,postQuestion };
