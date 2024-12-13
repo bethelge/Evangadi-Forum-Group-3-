@@ -83,5 +83,9 @@ async function login(req, res) {
       .json({ msg: "something went wrong, try again latter" });
   }
 }
-
-module.exports = { register, login };
+async function checkUser(req, res) {
+  const username = req.user.username;
+  const userid = req.user.userid;
+  res.status(StatusCodes.OK).json({ msg: "valid user", username, userid });
+}
+module.exports = { register, login, checkUser };
