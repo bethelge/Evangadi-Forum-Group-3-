@@ -1,0 +1,54 @@
+.registerContainer {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .formWrapper {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .inputField {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .submitButton {
+    background-color: #0056b3;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .submitButton:hover {
+    background-color: #003d80;
+  }
+  
+  .signInLink {
+    color: #ffa500;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #666;
+  }
+  .loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: grey;
+  }
+  .emailError,
+  .passwordError {
+    outline: 2px solid red;
+  }
