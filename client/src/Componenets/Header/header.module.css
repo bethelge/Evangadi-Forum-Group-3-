@@ -1,0 +1,61 @@
+.header_container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centering the content */
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(81, 107, 152, 0.16);
+    min-height: 10vh;
+    padding: 0 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .nav_links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-weight: 500;
+    margin-left: 300px;
+  }
+  
+  .nav_links a {
+    font-size: 16px;
+    color: #2a2a2a;
+    transition: color 0.2s ease;
+  }
+  
+  .nav_links a:hover {
+    color: #ff6600;
+  }
+  
+  .logout_button {
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #3366ff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    width: 200px;
+  }
+  
+  .logout_button:hover {
+    background-color: #254edb;
+  }
+  
+  /* Adjust the logo styling */
+  .logo {
+    height: 25px;
+    width: auto;
+    border: none;
+    vertical-align:middle;
+    overflow-clip-margin: content-box;
+  }
+  
+  /* Add a wrapper to center the logo, links, and button together */
+  .header_inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;  /* This centers everything horizontally */
+    width: 100%;
+    gap: 30px; /* Optional: Adjusts the space between items */
+  }
