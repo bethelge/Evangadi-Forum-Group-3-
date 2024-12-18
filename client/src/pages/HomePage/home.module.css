@@ -1,0 +1,86 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .questionContainer {
+    min-height: calc(100vh - 40px); /* Adjust for the footer height */
+    padding: 20px;
+    margin-bottom: 40px; /* Space for footer */
+    background-color: #f9f9f9; /* Light off-white color */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+  
+  .askButton {
+    background-color: #007bff;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 8px 20px;
+    color: #fff;
+  }
+  
+  .askButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .welcomeText {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .searchInput {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .avatarSection {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .avatar_user{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .userAvatar {
+    border: 2px solid #ddd;
+  }
+  
+  .usernameText {
+    margin-top: 4px; /* Proper spacing below avatar */
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center; /* Ensures proper alignment below avatar */
+    width: 50px; /* Matches avatar width */
+  }
+  .title{
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+
+  }
+  
+  .questionTitle {
+    position: absolute;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    flex-grow: 1; /* Take up as much space as possible */
+    text-align: left; /* Ensure text starts on the left */
+  }
+  .arrowIcon {
+    margin-left: 1000px;  /* Push the arrow to the far right */
+    color: #333;
+  }
