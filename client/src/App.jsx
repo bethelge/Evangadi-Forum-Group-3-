@@ -4,8 +4,10 @@ import { useState } from "react";
 import "./App.css";
 import Home from "./pages/HomePage/Home";
 import Login from "./pages/LoginPage/Login";
+import Logout from "./pages/Logout";
 import Register from "./pages/RegisterPage/Register";
 import axios from "./axiosConfig";
+
 
 export const appState = createContext();
 function App() {
@@ -47,6 +49,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="Logout" element={<Logout />} />
       </Routes>
     </appState.Provider>
   );

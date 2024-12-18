@@ -4,8 +4,10 @@ import classes from "./header.module.css";
 import logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
+import { appState } from "../../App";
+
 function Header() {
-  const user = "user";
+  const { user } = useContext(appState);
   return (
     <header className={`${classes.header_container} container-fluid`}>
       <div className={`${classes.header_inner}`}>
