@@ -59,3 +59,37 @@
     width: 100%;
     gap: 30px; /* Optional: Adjusts the space between items */
   }
+  @media (max-width: 575px) {
+    .header_inner {
+      flex-direction: column; 
+      gap: 15px; 
+    }
+  
+    .nav_links {
+      margin-left: 0; 
+      justify-content: center; 
+    }
+  
+    .logout_button {
+      width: 100%; 
+      text-align: center; 
+    }
+  }
+  
+  
+  @media (min-width: 576px) and (max-width: 768px) {
+    .header_inner {
+      flex-direction: row; 
+      justify-content: space-between; 
+      gap: 20px; 
+    }
+  
+    .nav_links {
+      margin-left: 0; 
+      gap: 10px; 
+    }
+  
+    .logout_button {
+      width: auto; 
+    }
+  }
