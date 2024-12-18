@@ -1,23 +1,25 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./header.module.css";
-import logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { appState } from "../../App";
 
 function Header() {
   const { user } = useContext(appState);
+
   return (
     <header className={`${classes.header_container} container-fluid`}>
       <div className={`${classes.header_inner}`}>
         {/* Logo Section */}
         <div>
-          <img
-            src="	https://www.evangadi.com/themes/humans/assets/hammerlook/img/misc/evangadi-logo-black.png"
-            alt="Evangadi Logo"
-            className={classes.logo}
-          />
+          <Link to="/">
+            <img
+              src="https://www.evangadi.com/themes/humans/assets/hammerlook/img/misc/evangadi-logo-black.png"
+              alt="Evangadi Logo"
+              className={classes.logo}
+            />
+          </Link>
         </div>
 
         {/* Navigation Links */}
@@ -30,7 +32,7 @@ function Header() {
           </Link>
         </nav>
 
-        {/* Sign and sign out  */}
+        {/* Sign In and Sign Out */}
         {!user ? (
           <div>
             <Link
