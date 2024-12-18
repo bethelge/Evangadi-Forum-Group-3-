@@ -5,17 +5,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./login.module.css";
 import Footer from "../../Componenets/Footer/Footer";
 import Header from "../../Componenets/Header/Header";
-import About from "../../Componenets/About/About"; // Importing About component
-import { appState } from "../../App"
-import {ClipLoader} from "react-spinners"
+import About from "../../Componenets/About/About";
+import { appState } from "../../App";
+import { ClipLoader } from "react-spinners";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 function Login() {
-  const [sucess, setSucess] = useState("")
+  const [sucess, setSucess] = useState("");
   const [errodata, setErrorData] = useState("");
   const [passwordError, setPasswordError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const { setUser } = useContext(appState);
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // For toggling password visibility
 
   const navigate = useNavigate();
   const emailNameDom = useRef(null);
@@ -25,11 +28,12 @@ function Login() {
     const passwordValue = passwordNameDom?.current?.value;
     setPasswordError(passwordValue.length <= 8); // Set error if length < 8
     setEmailError(false);
-    setErrorData("")
+    setErrorData("");
   }
+
   function clearEmailError() {
     setEmailError(false);
-    setErrorData("")
+    setErrorData("");
   }
 
   async function handleSubmit(e) {
@@ -43,24 +47,22 @@ function Login() {
     }
 
     try {
-        setLoading(true)
-        const { data } = await axios.post("/users/login", {
+      setLoading(true);
+      const { data } = await axios.post("/users/login", {
         email: emailnameValue,
         password: passwordnameValue,
       });
       alert("Login successful");
-      console.log(data)
-      // setEmailError("")
-      // setPasswordError("")
-      setSucess(data.msg)
+      setSucess(data.msg);
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data)); // Save user data
       setUser(data);
       setLoading(false);
-     
       navigate("/");
     } catch (error) {
-      const errorMessage = error?.response?.data?.msg || "An unexpected error occurred. Please try again.";
+      const errorMessage =
+        error?.response?.data?.msg ||
+        "An unexpected error occurred. Please try again.";
       setErrorData(errorMessage);
       setLoading(false);
       if (errorMessage === "invalid credentilas!") {
@@ -85,26 +87,29 @@ function Login() {
                   Create a new account
                 </Link>
               </p>
-              <div>
               <form onSubmit={handleSubmit}>
-                {errodata?(<small
-                  style={{
-                    textAlign: "center",
-                    color: "red",
-                    maxWidth: "100%",
-                  }}
-                >
-                  {errodata}
-                </small>):(<small
-                  style={{
-                    textAlign: "center",
-                    color: "blue",
-                    maxWidth: "100%",
-                  }}
-                >
-                  {sucess}
-                </small>)}
-                
+                {errodata ? (
+                  <small
+                    style={{
+                      textAlign: "center",
+                      color: "red",
+                      maxWidth: "100%",
+                    }}
+                  >
+                    {errodata}
+                  </small>
+                ) : (
+                  <small
+                    style={{
+                      textAlign: "center",
+                      color: "blue",
+                      maxWidth: "100%",
+                    }}
+                  >
+                    {sucess}
+                  </small>
+                )}
+
                 <div className="mb-3">
                   <label htmlFor="email" className={classes.label}>
                     Email
@@ -120,30 +125,39 @@ function Login() {
                     onChange={clearEmailError}
                   />
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 position-relative">
                   <label htmlFor="password" className={classes.label}>
                     Password
                   </label>
                   <input
                     ref={passwordNameDom}
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     id="password"
                     placeholder="Your Password"
                     onChange={validatePassword}
                     className={`form-control ${classes.inputField} ${
-                      passwordError ? classes.passwordError : ""
-                    }`}
+                      classes.inputField
+                    } ${passwordError ? classes.passwordError : ""}`}
+                  />
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEye : faEyeSlash}
+                    className={classes.eyeIcon}
+                    onClick={() => setShowPassword((prev) => !prev)}
                   />
                 </div>
                 <div className="text-center">
                   <button
                     type="submit"
                     className={`btn btn-warning w-100 ${classes.submitButton}`}
-                  >{loading?(<div className={classes.loader}>
-                    <ClipLoader size={22} color="grey" /><small>please wait</small>
-                    </div>):
-                    ( "Submit")}
-                   
+                  >
+                    {loading ? (
+                      <div className={classes.loader}>
+                        <ClipLoader size={22} color="grey" />
+                        <small>please wait</small>
+                      </div>
+                    ) : (
+                      "Submit"
+                    )}
                   </button>
                 </div>
                 <p className="text-center mt-3">
@@ -152,7 +166,6 @@ function Login() {
                   </Link>
                 </p>
               </form>
-              </div>
             </div>
           </div>
 
