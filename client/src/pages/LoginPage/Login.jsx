@@ -75,103 +75,95 @@ function Login() {
   return (
     <>
       <Header />
-      <div className={`container ${classes.loginContainer}`}>
-        <div className="row align-items-center">
-          {/* Login Form Section */}
-          <div className="col-lg-6 col-md-12">
-            <div className={`p-4 ${classes.formWrapper}`}>
-              <h3 className="text-center mb-4">Login to your account</h3>
-              <p className="text-center">
-                Don’t have an account?{" "}
-                <Link to="/register" className={classes.createAccountLink}>
-                  Create a new account
-                </Link>
-              </p>
-              <form onSubmit={handleSubmit}>
-                {errodata ? (
-                  <small
-                    style={{
-                      textAlign: "center",
-                      color: "red",
-                      maxWidth: "100%",
-                    }}
-                  >
-                    {errodata}
-                  </small>
-                ) : (
-                  <small
-                    style={{
-                      textAlign: "center",
-                      color: "blue",
-                      maxWidth: "100%",
-                    }}
-                  >
-                    {sucess}
-                  </small>
-                )}
-
-                <div className="mb-3">
-                  <label htmlFor="email" className={classes.label}>
-                    Email
-                  </label>
-                  <input
-                    ref={emailNameDom}
-                    type="email"
-                    id="email"
-                    placeholder="Your Email"
-                    className={`form-control ${classes.inputField} ${
-                      emailError ? classes.emailError : ""
-                    }`}
-                    onChange={clearEmailError}
-                  />
-                </div>
-                <div className="mb-3 position-relative">
-                  <label htmlFor="password" className={classes.label}>
-                    Password
-                  </label>
-                  <input
-                    ref={passwordNameDom}
-                    type={showPassword ? "text" : "password"}
-                    id="password"
-                    placeholder="Your Password"
-                    onChange={validatePassword}
-                    className={`form-control ${classes.inputField} ${
-                      classes.inputField
-                    } ${passwordError ? classes.passwordError : ""}`}
-                  />
-                  <FontAwesomeIcon
-                    icon={showPassword ? faEye : faEyeSlash}
-                    className={classes.eyeIcon}
-                    onClick={() => setShowPassword((prev) => !prev)}
-                  />
-                </div>
-                <div className="text-center">
-                  <button
-                    type="submit"
-                    className={`btn btn-warning w-100 ${classes.submitButton}`}
-                  >
-                    {loading ? (
-                      <div className={classes.loader}>
-                        <ClipLoader size={22} color="grey" />
-                        <small>please wait</small>
-                      </div>
-                    ) : (
-                      "Submit"
-                    )}
-                  </button>
-                </div>
-                <p className="text-center mt-3">
-                  <Link to="#" className={classes.forgotPasswordLink}>
-                    Forgot your password?
+      <div className={classes.contentWrapper}>
+        <div className={`container ${classes.loginContainer}`}>
+          <div className="row align-items-center">
+            {/* Login Form Section */}
+            <div className="col-lg-6 col-md-12">
+              <div className={`p-4 ${classes.formWrapper}`}>
+                <h3 className="text-center mb-4">Login to your account</h3>
+                <p className="text-center">
+                  Don’t have an account?{" "}
+                  <Link to="/register" className={classes.createAccountLink}>
+                    Create a new account
                   </Link>
                 </p>
-              </form>
+                <form onSubmit={handleSubmit}>
+                  {/* Error and Success Messages */}
+                  {errodata ? (
+                    <small style={{ textAlign: "center", color: "red" }}>
+                      {errodata}
+                    </small>
+                  ) : (
+                    <small style={{ textAlign: "center", color: "blue" }}>
+                      {sucess}
+                    </small>
+                  )}
+                  {/* Email Field */}
+                  <div className="mb-3">
+                    <label htmlFor="email" className={classes.label}>
+                      Email
+                    </label>
+                    <input
+                      ref={emailNameDom}
+                      type="email"
+                      id="email"
+                      placeholder="Your Email"
+                      className={`form-control ${classes.inputField} ${
+                        emailError ? classes.emailError : ""
+                      }`}
+                      onChange={clearEmailError}
+                    />
+                  </div>
+                  {/* Password Field */}
+                  <div className="mb-3 position-relative">
+                    <label htmlFor="password" className={classes.label}>
+                      Password
+                    </label>
+                    <input
+                      ref={passwordNameDom}
+                      type={showPassword ? "text" : "password"}
+                      id="password"
+                      placeholder="Your Password"
+                      onChange={validatePassword}
+                      className={`form-control ${classes.inputField} ${
+                        passwordError ? classes.passwordError : ""
+                      }`}
+                    />
+                    <FontAwesomeIcon
+                      icon={showPassword ? faEye : faEyeSlash}
+                      className={classes.eyeIcon}
+                      onClick={() => setShowPassword((prev) => !prev)}
+                    />
+                  </div>
+                  {/* Submit Button */}
+                  <div className="text-center">
+                    <button
+                      type="submit"
+                      className={`btn btn-warning w-100 ${classes.submitButton}`}
+                    >
+                      {loading ? (
+                        <div className={classes.loader}>
+                          <ClipLoader size={22} color="grey" />
+                          <small>please wait</small>
+                        </div>
+                      ) : (
+                        "Submit"
+                      )}
+                    </button>
+                  </div>
+                  <p className="text-center mt-3">
+                    <Link to="#" className={classes.forgotPasswordLink}>
+                      Forgot your password?
+                    </Link>
+                  </p>
+                </form>
+              </div>
             </div>
-          </div>
-
-          {/* About Section */}
-          <div className="col-lg-6 col-md-12 d-flex">
-            <About />
+            {/* About Section */}
+            <div className="col-lg-6 col-md-12 d-flex">
+              <About />
+            </div>
           </div>
         </div>
       </div>
