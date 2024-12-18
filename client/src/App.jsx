@@ -7,7 +7,7 @@ import Login from "./pages/LoginPage/Login";
 import Logout from "./pages/Logout";
 import Register from "./pages/RegisterPage/Register";
 import axios from "./axiosConfig";
-
+import ProtectedRoute from "./ProtectedRoute";
 
 export const appState = createContext();
 function App() {
@@ -46,10 +46,26 @@ function App() {
   return (
     <appState.Provider value={{ user, setUser }}>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              {" "}
+              <Home />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="Logout" element={<Logout />} />
+        <Route
+          path="Logout"
+          element={
+            <ProtectedRoute>
+              {" "}
+              <Logout />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </appState.Provider>
   );
