@@ -8,6 +8,7 @@ import Logout from "./pages/Logout";
 import Register from "./pages/RegisterPage/Register";
 import axios from "./axiosConfig";
 import ProtectedRoute from "./ProtectedRoute";
+import AskQuestion from "./pages/AskQuestionPage/AskQuestion";
 
 export const appState = createContext();
 function App() {
@@ -50,7 +51,6 @@ function App() {
           path="/"
           element={
             <ProtectedRoute>
-              {" "}
               <Home />
             </ProtectedRoute>
           }
@@ -61,8 +61,15 @@ function App() {
           path="Logout"
           element={
             <ProtectedRoute>
-              {" "}
               <Logout />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/AskQuestion"
+          element={
+            <ProtectedRoute>
+              <AskQuestion />
             </ProtectedRoute>
           }
         />
