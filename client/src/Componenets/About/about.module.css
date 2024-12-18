@@ -1,0 +1,33 @@
+.aboutWrapper {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+  }
+  
+  .about {
+    color: #ffa500;
+  }
+  
+  .aboutTitle {
+    font-size: 1.5rem;
+    color: #2f2f2f;
+    font-weight: bold;
+  }
+  
+  .aboutText {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  .howItWorksButton {
+    background-color: #ffa500;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .howItWorksButton:hover {
+    background-color: #cc8400;
+  }
