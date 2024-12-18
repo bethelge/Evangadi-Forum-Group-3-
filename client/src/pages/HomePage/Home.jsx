@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./home.module.css";
-import Avatar from "react-avatar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import axios from "../../axiosConfig";
 import { Link } from "react-router-dom";
@@ -63,35 +64,36 @@ function Home() {
           placeholder="Search questions..."
         />
         <div>
+          <h3>Questions</h3>
+          <hr />
           {questions?.length > 0 ? (
             questions?.map((question, i) => (
-              <div key={i} className={classes.avatarSection}>
-                <div className={classes.avatar_user}>
-                  {/* Avatar */}
-                  <Avatar
-                    name={user?.username}
-                    size="50"
-                    round
-                    className={classes.userAvatar}
-                  />
-                  <small className={classes.usernameText}>
-                    {question?.username}
-                  </small>
+              <React.Fragment key={i}>
+                <div className={classes.avatarSection}>
+                  <div className={classes.avatar_user}>
+                    <div className={classes.user__icon}>
+                      <FontAwesomeIcon icon={faUser} />
+                    </div>
+                    <small className={classes.usernameText}>
+                      {question?.username}
+                    </small>
+                  </div>
+                  <div className={`ms-3 ${classes.title}`}>
+                    <Link
+                      to={`/question/${question?.questionid}`}
+                      className={classes.questionTitle}
+                    >
+                      {question?.title}
+                    </Link>
+                    <MdKeyboardArrowRight
+                      size={30}
+                      className={classes.arrowIcon}
+                    />
+                  </div>
                 </div>
-                {/* Title */}
-                <div className={`ms-3 ${classes.title}`}>
-                  <Link
-                    to={`/question/${question?.questionid}`}
-                    className={classes.questionTitle}
-                  >
-                    {question?.title}
-                  </Link>
-                  <MdKeyboardArrowRight
-                    size={30}
-                    className={classes.arrowIcon}
-                  />
-                </div>
-              </div>
+                {/* Add horizontal line except after the last question */}
+                {i < questions.length - 1 && <hr className={classes.divider} />}
+              </React.Fragment>
             ))
           ) : (
             <p>No question found</p>
