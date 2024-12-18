@@ -1,43 +1,42 @@
 .footer {
-    background-color: #2f2f2f; /* Dark background color */
-    padding: 20px 0;
-  }
-  
-  /* Footer Title Styling */
-  .footerTitle {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    font-weight: bold;
-    color: white; /* Orange for section titles */
-  }
-  
-  /* Logo Placeholder Styling */
-  .logoPlaceholder {
-    font-size: 5px;
-    color: white;
-    border: none;
-    padding: 10px;
-    margin-bottom: 15px; /* Add spacing below logo */
-  }
-  .logoPlaceholder img{
-    height: 20px;
-    filter: invert(1); /* Inverts the color */
-  }
-  
-  /* Icon Group Styling */
-  .iconGroup {
-    display: flex;
-    justify-content: center;
-    gap: 15px; /* Space between icons */
-  }
-  
-  /* Individual Icon Styling */
-  .icon {
-    font-size: 1.5rem;
-    color: white; /* White color for icons */
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .icon:hover {
-    transform: scale(1.2); /* Hover effect */
-  }
+  background-color: #3a4559; /* Dark background color */
+  padding: 20px 0;
+}
+
+/* Footer Title Styling */
+.footerTitle {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: white; /* Orange for section titles */
+}
+
+/* Logo Placeholder Styling */
+.logoPlaceholder {
+  font-size: 5px;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-bottom: 15px; /* Add spacing below logo */
+}
+.logoPlaceholder img {
+  height: 20px;
+}
+
+/* Icon Group Styling */
+.iconGroup {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Space between icons */
+}
+
+/* Individual Icon Styling */
+.icon {
+  font-size: 1.5rem;
+  color: white; /* White color for icons */
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon:hover {
+  transform: scale(1.2); /* Hover effect */
+}
