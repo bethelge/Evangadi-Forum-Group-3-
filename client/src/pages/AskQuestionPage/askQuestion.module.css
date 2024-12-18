@@ -1,0 +1,104 @@
+.postQuestion {
+    padding: 50px 0;
+    background-color: #ffffff;
+  }
+  
+  .stepsSection {
+    margin-bottom: 40px;
+    text-align: center; /* Center the entire section */
+  }
+  
+  .stepsTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #212529;
+    margin-bottom: 20px;
+  }
+  
+  .lists .stepsList {
+    display: inline-block; /* Makes the list container inline to center it */
+    text-align: center; /* Aligns text within the list items to the left */
+    justify-content: center;
+  }
+  
+  .stepsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .stepItem {
+    font-size: 16px;
+    color: #6c757d;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Ensures the arrow and text align correctly */
+  }
+  
+  .arrow {
+    color: #007bff;
+    font-size: 18px;
+    margin-right: 8px;
+  }
+  
+  .formSection {
+    text-align: center;
+  }
+  
+  .formTitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: #212529;
+    margin-bottom: 10px;
+  }
+  
+  .formLink {
+    font-size: 14px;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  .lists {
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .formLink a {
+    text-decoration: none;
+  }
+  
+  .questionTitle {
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+  }
+  
+  .questionDescription {
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+  }
+  
+  .postButton {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .postButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .errorInput {
+    border: 2px solid red;
+    outline: none;
+  }
