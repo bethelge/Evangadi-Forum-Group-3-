@@ -45,7 +45,7 @@ function Header() {
             to="/Logout"
             className={`btn btn-primary ${classes.logout_button}`}
           >
-            SIGN OUT
+            Log Out
           </Link>
         )}
       </div>
