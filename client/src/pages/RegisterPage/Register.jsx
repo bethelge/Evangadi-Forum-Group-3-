@@ -6,7 +6,7 @@ import classes from "./register.module.css";
 import Header from "../../Componenets/Header/Header";
 import Footer from "../../Componenets/Footer/Footer";
 import About from "../../Componenets/About/About"; // Importing the About component
-import {ClipLoader} from "react-spinners"
+import { ClipLoader } from "react-spinners";
 
 function Register() {
   const [data, setData] = useState("");
@@ -60,8 +60,8 @@ function Register() {
         email: emailnameValue,
         password: passwordnameValue,
       });
-      alert("Registered successfully, please login");
-      setLoading(false)
+      // alert("Registered successfully, please login");
+      setLoading(false);
       navigate("/login");
     } catch (error) {
       if (error.response && error.response.data && error.response.data.msg) {
@@ -177,10 +177,15 @@ function Register() {
                   <button
                     type="submit"
                     className={`btn btn-primary w-100 ${classes.submitButton}`}
-                  >{loading?(<div className={classes.loader}>
-                    <ClipLoader size={22} color="grey" /><small>please wait</small>
-                    </div>):
-                    ( "  Agree and Join")}        
+                  >
+                    {loading ? (
+                      <div className={classes.loader}>
+                        <ClipLoader size={22} color="grey" />
+                        <small>please wait</small>
+                      </div>
+                    ) : (
+                      "  Agree and Join"
+                    )}
                   </button>
                 </div>
                 <p className={`text-center ${classes.agreementText}`}>

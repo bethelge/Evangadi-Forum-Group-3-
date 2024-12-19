@@ -52,7 +52,7 @@ function Login() {
         email: emailnameValue,
         password: passwordnameValue,
       });
-      alert("Login successful");
+      // alert("Login successful");
       setSucess(data.msg);
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data)); // Save user data
