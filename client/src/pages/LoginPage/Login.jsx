@@ -153,8 +153,8 @@ function Login() {
                     </button>
                   </div>
                   <p className="text-center mt-3">
-                    <Link to="#" className={classes.forgotPasswordLink}>
-                      Forgot your password?
+                    <Link to="/register" className={classes.createAccountLink}>
+                      Create an account?
                     </Link>
                   </p>
                 </form>

@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { RiYoutubeLine } from "react-icons/ri";
-
+import logo from "../../assets/images/evangadi-logo-footer.png";
 function Footer() {
   return (
     <footer className={`text-white py-5 ${classes.footer}`}>
@@ -13,10 +13,7 @@ function Footer() {
           {/* Logo Section */}
           <div className="col-md-4 text-center">
             <div className={classes.logoPlaceholder}>
-              <img
-                src="https://www.evangadi.com/themes/humans/assets/hammerlook/img/misc/evangadi-logo-black.png"
-                alt=""
-              />
+              <img src={logo} alt="" />
             </div>
             {/* Icons below the logo */}
             <div className={classes.iconGroup}>
