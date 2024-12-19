@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import axios from "../../axiosConfig";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./questionAnswer.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import { appState } from "../../App";
 import Header from "../../Componenets/Header/Header";
@@ -100,11 +102,9 @@ function QuestionAnswer() {
               answers.map((answer, index) => (
                 <div key={index} className={`d-flex ${classes.answerItem}`}>
                   <div className={classes.avatarSection}>
-                    <img
-                      src="https://via.placeholder.com/50"
-                      alt="user-avatar"
-                      className={classes.avatar}
-                    />
+                  <div className={classes.user__icon}>
+                      <FontAwesomeIcon icon={faUser} />
+                    </div>
                     <span className={classes.username}>{answer.username}</span>
                   </div>
                   <p className={classes.answerText}>{answer.answer}</p>
