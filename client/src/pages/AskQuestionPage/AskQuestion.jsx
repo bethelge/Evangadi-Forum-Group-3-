@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"; // Importing Bootstrap
 import classes from "./askQuestion.module.css";
 import axios from "../../axiosConfig"; // Ensure axiosConfig has the correct base URL
 import { appState } from "../../App";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../../Componenets/Header/Header";
 import Footer from "../../Componenets/Footer/Footer";
 import { ClipLoader } from "react-spinners";
@@ -15,6 +15,7 @@ function AskQuestion() {
   const titleDom = useRef(null);
   const descDom = useRef(null);
   const { user } = useContext(appState);
+  const navigate = useNavigate();
 
   function resetMessage() {
     setFile("");
@@ -58,12 +59,14 @@ function AskQuestion() {
         }
       );
       console.log(data);
-      setFile(data.message);
+      // setFile(data.message);
+      setFile(`${data.message}:redirecting to home page`);
       setLoading(false);
       setPostError("");
       // Emptying the fields after successful submission
       titleDom.current.value = "";
       descDom.current.value = "";
+      setTimeout(() => navigate("/"), 2000);
     } catch (error) {
       console.log(error);
       if (error.response) {
