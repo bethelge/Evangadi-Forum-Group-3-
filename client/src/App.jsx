@@ -9,6 +9,7 @@ import Register from "./pages/RegisterPage/Register";
 import axios from "./axiosConfig";
 import ProtectedRoute from "./ProtectedRoute";
 import AskQuestion from "./pages/AskQuestionPage/AskQuestion";
+import QuestionAnswer from './pages/QuestionAnswerPage/QuestionAnswer';
 
 export const appState = createContext();
 function App() {
@@ -73,6 +74,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+         <Route path='question/:question_id' element = {<ProtectedRoute><QuestionAnswer/></ProtectedRoute>}/>
       </Routes>
     </appState.Provider>
   );
