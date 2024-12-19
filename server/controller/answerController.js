@@ -7,12 +7,14 @@ const { StatusCodes } = require("http-status-codes");
 const getAllAnswers = async (req, res) => {
   const { question_id } = req.params;
 
+ 
   try {
     const query = `
       SELECT a.answerid, a.answer, u.username 
       FROM answers a 
       JOIN users u ON a.userid = u.userid 
       WHERE a.questionid = ?
+      ORDER BY a.answerid DESC;
     `;
 
     // Using `await` to handle the database query
