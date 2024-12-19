@@ -80,8 +80,8 @@ function Login() {
           <div className="row align-items-center">
             {/* Login Form Section */}
             <div className="col-lg-6 col-md-12">
-              <div className={`p-4 ${classes.formWrapper}`}>
-                <h3 className="text-center mb-4">Login to your account</h3>
+              <div className={`m-5 ${classes.formWrapper}`}>
+                <h3 className="text-center ">Login to your account</h3>
                 <p className="text-center">
                   Don’t have an account?{" "}
                   <Link to="/register" className={classes.createAccountLink}>
@@ -101,9 +101,7 @@ function Login() {
                   )}
                   {/* Email Field */}
                   <div className="mb-3">
-                    <label htmlFor="email" className={classes.label}>
-                      Email
-                    </label>
+                    <label htmlFor="email" className={classes.label}></label>
                     <input
                       ref={emailNameDom}
                       type="email"
@@ -117,9 +115,7 @@ function Login() {
                   </div>
                   {/* Password Field */}
                   <div className="mb-3 position-relative">
-                    <label htmlFor="password" className={classes.label}>
-                      Password
-                    </label>
+                    <label htmlFor="password" className={classes.label}></label>
                     <input
                       ref={passwordNameDom}
                       type={showPassword ? "text" : "password"}
@@ -152,7 +148,7 @@ function Login() {
                       )}
                     </button>
                   </div>
-                  <p className="text-center mt-3">
+                  <p className="m-4 text-center ">
                     <Link to="/register" className={classes.createAccountLink}>
                       Create an account?
                     </Link>

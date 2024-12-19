@@ -1,12 +1,8 @@
 .contentWrapper {
-  background-image: url("../../assets/images/evangb.svg");
+  background-image: url("../../assets/images/bg-svg-f.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  /* min-height: calc(100vh - 140px); /* Adjust for header and footer height */
-  /* display: flex;
-  align-items: center; 
-  padding: 40px 0; */
 }
 
 .loginContainer {
@@ -15,9 +11,14 @@
 
 .formWrapper {
   background-color: white;
-  padding: 30px;
+  padding: 45px;
+  padding-top: 150px;
+  padding-bottom: 150px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  width: 100%;
+  max-width: 500px;
 }
 
 .inputField {
@@ -69,7 +70,7 @@
 .eyeIcon {
   position: absolute;
   right: 10px;
-  top: 50%;
+  top: 30%;
 
   cursor: pointer;
   color: #999;
