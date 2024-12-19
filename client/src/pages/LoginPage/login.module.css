@@ -27,11 +27,12 @@
 }
 
 .submitButton {
-  background-color: #ffa500;
+  background-color: #ff8204;
   border: none;
   font-size: 1rem;
   font-weight: bold;
   color: white;
+  width: 150px !important;
 }
 
 .submitButton:hover {
@@ -39,9 +40,9 @@
 }
 
 .createAccountLink {
-  color: #ffa500;
+  color: #da8954;
   font-weight: bold;
-  text-decoration: none;
+  /* text-decoration: none; */
 }
 
 .label {
@@ -50,11 +51,6 @@
   margin-bottom: 5px;
   display: block;
   color: #666;
-}
-
-.forgotPasswordLink {
-  color: #0056b3;
-  text-decoration: underline;
 }
 
 .loader {
