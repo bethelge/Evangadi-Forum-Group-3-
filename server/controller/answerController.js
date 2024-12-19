@@ -13,6 +13,7 @@ const getAllAnswers = async (req, res) => {
       FROM answers a 
       JOIN users u ON a.userid = u.userid 
       WHERE a.questionid = ?
+      ORDER BY a.answerid DESC;
     `;
 
     // Using `await` to handle the database query
