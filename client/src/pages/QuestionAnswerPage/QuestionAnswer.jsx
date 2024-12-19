@@ -8,6 +8,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import { appState } from "../../App";
 import Header from "../../Componenets/Header/Header";
+import Footer from "../../Componenets/Footer/Footer";
 
 function QuestionAnswer() {
   const { question_id } = useParams();
@@ -102,7 +103,7 @@ function QuestionAnswer() {
               answers.map((answer, index) => (
                 <div key={index} className={`d-flex ${classes.answerItem}`}>
                   <div className={classes.avatarSection}>
-                  <div className={classes.user__icon}>
+                    <div className={classes.user__icon}>
                       <FontAwesomeIcon icon={faUser} />
                     </div>
                     <span className={classes.username}>{answer.username}</span>
@@ -152,6 +153,7 @@ function QuestionAnswer() {
           </button>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
