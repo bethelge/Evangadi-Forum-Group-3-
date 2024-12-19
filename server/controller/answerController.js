@@ -7,6 +7,7 @@ const { StatusCodes } = require("http-status-codes");
 const getAllAnswers = async (req, res) => {
   const { question_id } = req.params;
 
+ 
   try {
     const query = `
       SELECT a.answerid, a.answer, u.username 
