@@ -46,6 +46,10 @@ function QuestionAnswer() {
     }
   }, [question_id, token]);
 
+  function clearsucess(){
+    setSucess("")
+  }
+
   const handleAnswerSubmit = async () => {
     if (!newAnswer) {
       console.log("All fields are required");
@@ -143,7 +147,10 @@ function QuestionAnswer() {
             placeholder="Your Answer..."
             rows="4"
             value={newAnswer}
-            onChange={(e) => setNewAnswer(e.target.value)}
+            onChange={(e) => {
+              setNewAnswer(e.target.value)
+              clearsucess()
+            }}
           ></textarea>
           <button
             className={`btn btn-primary ${classes.submitButton}`}
