@@ -67,7 +67,9 @@ function Register() {
         const errorMessage = error?.response?.data?.msg;
         setData(errorMessage);
         setLoading(false);
-        if (errorMessage.includes("email already exists")) {
+
+        // Check for specific error to set emailError state
+        if (errorMessage.includes("user already existed")) {
           setEmailError(true);
         }
       } else {
