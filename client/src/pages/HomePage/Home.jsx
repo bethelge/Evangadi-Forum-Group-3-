@@ -13,18 +13,21 @@ import Footer from "../../Componenets/Footer/Footer";
 function Home() {
   const { user } = useContext(appState);
   const [questions, setQuestions] = useState([]);
-  const token = localStorage.getItem("token"); // Retrieve the token from localStorage
+  const [searchQuery, setSearchQuery] = useState(""); // State for search input
+  const [filteredQuestions, setFilteredQuestions] = useState([]); // State for filtered questions
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    // Async function to fetch questions
+    // Fetch questions from the backend
     const fetchQuestions = async () => {
       try {
         const { data } = await axios.get("/question", {
           headers: {
-            Authorization: `Bearer ${token}`, // Add the token in the headers
+            Authorization: `Bearer ${token}`,
           },
         });
-        setQuestions(data); // Update state with fetched questions
+        setQuestions(data); // Set the full list of questions
+        setFilteredQuestions(data); // Initialize filtered questions
       } catch (error) {
         console.error(
           "Error fetching questions:",
@@ -34,9 +37,17 @@ function Home() {
     };
 
     if (token) {
-      fetchQuestions(); // Call the function only if token exists
+      fetchQuestions();
     }
-  }, [token]); // Trigger the useEffect only when the token changes
+  }, [token]);
+
+  useEffect(() => {
+    // Filter questions based on the search query
+    const results = questions.filter((question) =>
+      question.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredQuestions(results);
+  }, [searchQuery, questions]);
 
   return (
     <>
@@ -62,12 +73,14 @@ function Home() {
           type="search"
           className={`form-control ${classes.searchInput}`}
           placeholder="Search questions..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)} // Update search query
         />
         <div>
           <h3>Questions</h3>
           <hr />
-          {questions?.length > 0 ? (
-            questions?.map((question, i) => (
+          {filteredQuestions?.length > 0 ? (
+            filteredQuestions.map((question, i) => (
               <React.Fragment key={i}>
                 <div className={classes.avatarSection}>
                   <div className={classes.avatar_user}>
@@ -92,11 +105,13 @@ function Home() {
                   </div>
                 </div>
                 {/* Add horizontal line except after the last question */}
-                {i < questions.length - 1 && <hr className={classes.divider} />}
+                {i < filteredQuestions.length - 1 && (
+                  <hr className={classes.divider} />
+                )}
               </React.Fragment>
             ))
           ) : (
-            <p>No question found</p>
+            <p>No questions match your search.</p>
           )}
         </div>
       </div>

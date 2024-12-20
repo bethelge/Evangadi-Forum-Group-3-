@@ -60,7 +60,6 @@ function Register() {
         email: emailnameValue,
         password: passwordnameValue,
       });
-      // alert("Registered successfully, please login");
       setLoading(false);
       navigate("/login");
     } catch (error) {
@@ -82,129 +81,131 @@ function Register() {
   return (
     <>
       <Header />
-      <div className={`container ${classes.registerContainer}`}>
-        <div className="row align-items-center">
-          {/* Register Form Section */}
-          <div className="col-lg-6 col-md-12">
-            <div className={`p-4 ${classes.formWrapper}`}>
-              <h3 className={`text-center mb-4 ${classes.formTitle}`}>
-                Join the network
-              </h3>
-              <p className="text-center">
-                Already have an account?{" "}
-                <Link to="/login" className={classes.signInLink}>
-                  Sign in
-                </Link>
-              </p>
-              <form onSubmit={handleSubmit}>
-                <small
-                  style={{
-                    textAlign: "center",
-                    color: "red",
-                    maxWidth: "100%",
-                  }}
-                >
-                  {data}
-                </small>
-                <div className="mb-3">
-                  <label htmlFor="username" className={classes.label}>
-                    User Name
-                  </label>
-                  <input
-                    ref={userNameDom}
-                    type="text"
-                    id="username"
-                    placeholder="Username"
-                    className={`form-control ${classes.inputField}`}
-                  />
-                </div>
-                <div className="mb-3 d-flex">
-                  <div className="me-2 w-50">
-                    <label htmlFor="firstName" className={classes.label}>
-                      First Name
-                    </label>
-                    <input
-                      ref={firstNameDom}
-                      type="text"
-                      id="firstName"
-                      placeholder="First Name"
-                      className={`form-control ${classes.inputField}`}
-                    />
-                  </div>
-                  <div className="ms-2 w-50">
-                    <label htmlFor="lastName" className={classes.label}>
-                      Last Name
-                    </label>
-                    <input
-                      ref={lastNameDom}
-                      type="text"
-                      id="lastName"
-                      placeholder="Last Name"
-                      className={`form-control ${classes.inputField}`}
-                    />
-                  </div>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="email" className={classes.label}>
-                    Email
-                  </label>
-                  <input
-                    ref={emailNameDom}
-                    type="email"
-                    id="email"
-                    placeholder="Email"
-                    className={`form-control ${classes.inputField} ${
-                      emailError ? classes.emailError : ""
-                    }`}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="password" className={classes.label}>
-                    Password
-                  </label>
-                  <input
-                    ref={passwordNameDom}
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    onChange={validatePassword} // Trigger validation on change
-                    className={`form-control ${classes.inputField} ${
-                      passwordError ? classes.passwordError : ""
-                    }`}
-                  />
-                </div>
-                <div className="mb-3 text-center">
-                  <button
-                    type="submit"
-                    className={`btn btn-primary w-100 ${classes.submitButton}`}
-                  >
-                    {loading ? (
-                      <div className={classes.loader}>
-                        <ClipLoader size={22} color="grey" />
-                        <small>please wait</small>
-                      </div>
-                    ) : (
-                      "  Agree and Join"
-                    )}
-                  </button>
-                </div>
-                <p className={`text-center ${classes.agreementText}`}>
-                  I agree to the{" "}
-                  <Link to="#" className={classes.privacyPolicyLink}>
-                    privacy policy
-                  </Link>{" "}
-                  and{" "}
-                  <Link to="#" className={classes.termsServiceLink}>
-                    terms of service.
+      <div className={classes.contentWrapper}>
+        <div className={`container ${classes.registerContainer}`}>
+          <div className="row align-items-center">
+            {/* Register Form Section */}
+            <div className="col-lg-6 col-md-12">
+              <div className={`p-4 ${classes.formWrapper}`}>
+                <h3 className={`text-center mb-4 ${classes.formTitle}`}>
+                  Join the network
+                </h3>
+                <p className="text-center">
+                  Already have an account?{" "}
+                  <Link to="/login" className={classes.signInLink}>
+                    Sign in
                   </Link>
                 </p>
-              </form>
+                <form onSubmit={handleSubmit}>
+                  <small
+                    style={{
+                      textAlign: "center",
+                      color: "red",
+                      maxWidth: "100%",
+                    }}
+                  >
+                    {data}
+                  </small>
+                  <div className="mb-3">
+                    <label htmlFor="username" className={classes.label}></label>
+                    <input
+                      ref={userNameDom}
+                      type="text"
+                      id="username"
+                      placeholder="Username"
+                      className={`form-control ${classes.inputField}`}
+                    />
+                  </div>
+                  <div className="mb-3 d-flex">
+                    <div className="me-2 w-50">
+                      <label
+                        htmlFor="firstName"
+                        className={classes.label}
+                      ></label>
+                      <input
+                        ref={firstNameDom}
+                        type="text"
+                        id="firstName"
+                        placeholder="First Name"
+                        className={`form-control ${classes.inputField}`}
+                      />
+                    </div>
+                    <div className="ms-2 w-50">
+                      <label
+                        htmlFor="lastName"
+                        className={classes.label}
+                      ></label>
+                      <input
+                        ref={lastNameDom}
+                        type="text"
+                        id="lastName"
+                        placeholder="Last Name"
+                        className={`form-control ${classes.inputField}`}
+                      />
+                    </div>
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="email" className={classes.label}></label>
+                    <input
+                      ref={emailNameDom}
+                      type="email"
+                      id="email"
+                      placeholder="Email"
+                      className={`form-control ${classes.inputField} ${
+                        emailError ? classes.emailError : ""
+                      }`}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="password" className={classes.label}></label>
+                    <input
+                      ref={passwordNameDom}
+                      type="password"
+                      id="password"
+                      placeholder="Password"
+                      onChange={validatePassword}
+                      className={`form-control ${classes.inputField} ${
+                        passwordError ? classes.passwordError : ""
+                      }`}
+                    />
+                  </div>
+                  <div className="mb-3 text-center">
+                    <button
+                      type="submit"
+                      className={`btn btn-primary w-100 ${classes.submitButton}`}
+                    >
+                      {loading ? (
+                        <div className={classes.loader}>
+                          <ClipLoader size={22} color="grey" />
+                          <small>please wait</small>
+                        </div>
+                      ) : (
+                        "  Agree and Join"
+                      )}
+                    </button>
+                  </div>
+                  <p className={`text-center ${classes.agreementText}`}>
+                    I agree to the{" "}
+                    <Link to="#" className={classes.privacyPolicyLink}>
+                      privacy policy
+                    </Link>{" "}
+                    and{" "}
+                    <Link to="#" className={classes.termsServiceLink}>
+                      terms of service.
+                    </Link>
+                  </p>
+                  <p className="text-center">
+                    <Link to="/login" className={classes.signInLink2}>
+                      Already have an account?
+                    </Link>
+                  </p>
+                </form>
+              </div>
             </div>
-          </div>
-
-          {/* About Section */}
-          <div className="col-lg-6 col-md-12 d-flex">
-            <About />
+            {/* About Section */}
+            <div className="col-lg-6 col-md-12 d-flex">
+              <About />
+            </div>
           </div>
         </div>
       </div>
