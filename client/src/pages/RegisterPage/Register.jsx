@@ -70,7 +70,7 @@ function Register() {
         setLoading(false);
 
         // Check for specific error to set emailError state
-        if (errorMessage.includes("email already exists")) {
+        if (errorMessage.includes("user already existed")) {
           setEmailError(true);
         }
       } else {
