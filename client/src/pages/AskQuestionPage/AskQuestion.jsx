@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; // Importing Bootstrap
 import classes from "./askQuestion.module.css";
-import axios from "../../axiosConfig"; // Ensure axiosConfig has the correct base URL
+import axios from "../../axiosConfig";
 import { appState } from "../../App";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../../Componenets/Header/Header";
