@@ -63,10 +63,14 @@ function Home() {
     setCurrentPage(pageNumber);
   };
 
-  // Generate page number buttons
+  // Generate page number buttons dynamically based on the current page
   const generatePageNumbers = () => {
     const pageNumbers = [];
-    for (let i = 1; i <= totalPages; i++) {
+    const startPage = Math.max(currentPage - 4, 1); // don't go below 1
+    const endPage = Math.min(currentPage + 4, totalPages); // don't go beyond total pages
+
+    // If the number of total pages exceeds 10, display the first and last button
+    for (let i = startPage; i <= endPage; i++) {
       pageNumbers.push(i);
     }
     return pageNumbers;
