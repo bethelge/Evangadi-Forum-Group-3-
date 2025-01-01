@@ -20,6 +20,9 @@ function QuestionAnswer() {
   const { user } = useContext(appState);
   const token = localStorage.getItem("token"); // Retrieve the token from localStorage
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const answersPerPage = 5;
+
   const fetchData = async () => {
     try {
       const headers = {
@@ -46,8 +49,8 @@ function QuestionAnswer() {
     }
   }, [question_id, token]);
 
-  function clearsucess(){
-    setSucess("")
+  function clearsucess() {
+    setSucess("");
   }
 
   const handleAnswerSubmit = async () => {
@@ -84,6 +87,29 @@ function QuestionAnswer() {
     }
   };
 
+  // Calculate paginated answers
+  const indexOfLastAnswer = currentPage * answersPerPage;
+  const indexOfFirstAnswer = indexOfLastAnswer - answersPerPage;
+  const currentAnswers = answers.slice(indexOfFirstAnswer, indexOfLastAnswer);
+
+  const totalPages = Math.ceil(answers.length / answersPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  // Generate page number buttons dynamically based on the current page
+  const generatePageNumbers = () => {
+    const pageNumbers = [];
+    const startPage = Math.max(currentPage - 4, 1); // don't go below 1
+    const endPage = Math.min(currentPage + 4, totalPages); // don't go beyond total pages
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  };
+
   return (
     <>
       <Header />
@@ -103,8 +129,8 @@ function QuestionAnswer() {
         <div className={`mb-4 ${classes.answersSection}`}>
           <h2 className={classes.sectionTitle}>Answer From The Community</h2>
           <div className={classes.answersList}>
-            {answers.length > 0 ? (
-              answers.map((answer, index) => (
+            {currentAnswers.length > 0 ? (
+              currentAnswers.map((answer, index) => (
                 <div key={index} className={`d-flex ${classes.answerItem}`}>
                   <div className={classes.avatarSection}>
                     <div className={classes.user__icon}>
@@ -119,6 +145,40 @@ function QuestionAnswer() {
               <p>No answers yet. Be the first to answer!</p>
             )}
           </div>
+        </div>
+
+        {/* Pagination Controls */}
+        <div className={classes.pagination}>
+          {/* First Button */}
+          <button
+            className={`btn ${classes.pageButton}`}
+            onClick={() => handlePageChange(1)}
+            disabled={currentPage === 1}
+          >
+            First
+          </button>
+
+          {/* Page Numbers */}
+          {generatePageNumbers().map((number) => (
+            <button
+              key={number}
+              className={`btn ${classes.pageButton} ${
+                currentPage === number ? classes.activePage : ""
+              }`}
+              onClick={() => handlePageChange(number)}
+            >
+              {number}
+            </button>
+          ))}
+
+          {/* Last Button */}
+          <button
+            className={`btn ${classes.pageButton}`}
+            onClick={() => handlePageChange(totalPages)}
+            disabled={currentPage === totalPages}
+          >
+            Last
+          </button>
         </div>
 
         {/* Answer Submission Section */}
@@ -148,8 +208,8 @@ function QuestionAnswer() {
             rows="4"
             value={newAnswer}
             onChange={(e) => {
-              setNewAnswer(e.target.value)
-              clearsucess()
+              setNewAnswer(e.target.value);
+              clearsucess();
             }}
           ></textarea>
           <button
