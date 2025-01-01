@@ -27,7 +27,7 @@ function Header() {
           <Link to="/" className="text-decoration-none text-dark">
             Home
           </Link>
-          <Link to="/" className="text-decoration-none text-dark">
+          <Link to="/how-it-works" className="text-decoration-none text-dark">
             How it Works
           </Link>
         </nav>
