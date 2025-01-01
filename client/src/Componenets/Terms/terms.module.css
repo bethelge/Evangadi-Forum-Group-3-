@@ -1,0 +1,34 @@
+/* PrivacyPolicy.css */
+.h1 {
+  font-size: 30px;
+  color: black;
+  line-height: 1.3em;
+}
+
+.h3 {
+  font-size: 20px;
+  color: #344767;
+  line-height: 1.4em;
+}
+
+.p {
+  color: #67748e;
+}
+
+.termsLink {
+  color: #d97d03;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .h1 {
+    font-size: 28px;
+  }
+
+  .h3 {
+    font-size: 18px;
+  }
+}
