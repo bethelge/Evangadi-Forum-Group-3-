@@ -13,12 +13,13 @@ import Footer from "../../Componenets/Footer/Footer";
 function Home() {
   const { user } = useContext(appState);
   const [questions, setQuestions] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(""); // State for search input
-  const [filteredQuestions, setFilteredQuestions] = useState([]); // State for filtered questions
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredQuestions, setFilteredQuestions] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const questionsPerPage = 5;
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    // Fetch questions from the backend
     const fetchQuestions = async () => {
       try {
         const { data } = await axios.get("/question", {
@@ -26,8 +27,8 @@ function Home() {
             Authorization: `Bearer ${token}`,
           },
         });
-        setQuestions(data); // Set the full list of questions
-        setFilteredQuestions(data); // Initialize filtered questions
+        setQuestions(data);
+        setFilteredQuestions(data);
       } catch (error) {
         console.error(
           "Error fetching questions:",
@@ -42,18 +43,30 @@ function Home() {
   }, [token]);
 
   useEffect(() => {
-    // Filter questions based on the search query
     const results = questions.filter((question) =>
       question.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredQuestions(results);
+    setCurrentPage(1); // Reset to first page on search query change
   }, [searchQuery, questions]);
+
+  const indexOfLastQuestion = currentPage * questionsPerPage;
+  const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
+  const currentQuestions = filteredQuestions.slice(
+    indexOfFirstQuestion,
+    indexOfLastQuestion
+  );
+
+  const totalPages = Math.ceil(filteredQuestions.length / questionsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <>
       <Header />
       <div className={classes.questionContainer}>
-        {/* Top Section */}
         <div className="d-flex justify-content-between align-items-center mb-4">
           <Link
             to="/AskQuestion"
@@ -68,19 +81,19 @@ function Home() {
           </div>
         </div>
 
-        {/* Search Bar */}
         <input
           type="search"
           className={`form-control ${classes.searchInput}`}
           placeholder="Search questions..."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)} // Update search query
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
+
         <div>
           <h3>Questions</h3>
           <hr />
-          {filteredQuestions?.length > 0 ? (
-            filteredQuestions.map((question, i) => (
+          {currentQuestions.length > 0 ? (
+            currentQuestions.map((question, i) => (
               <React.Fragment key={i}>
                 <div className={classes.avatarSection}>
                   <div className={classes.avatar_user}>
@@ -104,8 +117,7 @@ function Home() {
                     />
                   </div>
                 </div>
-                {/* Add horizontal line except after the last question */}
-                {i < filteredQuestions.length - 1 && (
+                {i < currentQuestions.length - 1 && (
                   <hr className={classes.divider} />
                 )}
               </React.Fragment>
@@ -113,6 +125,40 @@ function Home() {
           ) : (
             <p>No questions match your search.</p>
           )}
+        </div>
+
+        {/* Pagination Controls */}
+        <div className={classes.pagination}>
+          <button
+            className={`btn ${classes.pageButton}`}
+            onClick={() => handlePageChange(1)}
+            disabled={currentPage === 1}
+          >
+            First
+          </button>
+          <button
+            className={`btn ${classes.pageButton}`}
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span className={classes.pageNumber}>{currentPage}</span> /{" "}
+          <span>{totalPages}</span>
+          <button
+            className={`btn ${classes.pageButton}`}
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+          <button
+            className={`btn ${classes.pageButton}`}
+            onClick={() => handlePageChange(totalPages)}
+            disabled={currentPage === totalPages}
+          >
+            Last
+          </button>
         </div>
       </div>
       <Footer />
