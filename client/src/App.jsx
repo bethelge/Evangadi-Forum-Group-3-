@@ -9,7 +9,8 @@ import Register from "./pages/RegisterPage/Register";
 import axios from "./axiosConfig";
 import ProtectedRoute from "./ProtectedRoute";
 import AskQuestion from "./pages/AskQuestionPage/AskQuestion";
-import QuestionAnswer from './pages/QuestionAnswerPage/QuestionAnswer';
+import QuestionAnswer from "./pages/QuestionAnswerPage/QuestionAnswer";
+import HowItWorks from "../src/Componenets/HowItWorks/HowItWorks";
 
 export const appState = createContext();
 function App() {
@@ -74,7 +75,16 @@ function App() {
             </ProtectedRoute>
           }
         />
-         <Route path='question/:question_id' element = {<ProtectedRoute><QuestionAnswer/></ProtectedRoute>}/>
+        <Route
+          path="question/:question_id"
+          element={
+            <ProtectedRoute>
+              <QuestionAnswer />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="/how-it-works" element={<HowItWorks />} />
       </Routes>
     </appState.Provider>
   );
