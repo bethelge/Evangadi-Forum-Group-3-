@@ -1,8 +1,14 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./about.module.css";
+import { useNavigate } from "react-router-dom";
 
 function About() {
+  const navigate = useNavigate();
+
+  const handleHowItWorksClick = () => {
+    navigate("/how-it-works");
+  };
   return (
     <div className={` ${classes.aboutWrapper}`}>
       <small className={`text-warning d-block mb-2 ${classes.about}`}>
@@ -20,7 +26,10 @@ function About() {
         Whether you are willing to share your knowledge or you are just looking
         to meet mentors of your own, please start by joining the network here.
       </p>
-      <button className={`btn btn-warning fw-bold ${classes.howItWorksButton}`}>
+      <button
+        className={`btn btn-warning fw-bold ${classes.howItWorksButton}`}
+        onClick={handleHowItWorksClick}
+      >
         HOW IT WORKS
       </button>
     </div>
