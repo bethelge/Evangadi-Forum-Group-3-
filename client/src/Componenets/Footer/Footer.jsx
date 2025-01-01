@@ -5,10 +5,13 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { RiYoutubeLine } from "react-icons/ri";
 import logo from "../../assets/images/evangadi-logo-footer.png";
+import { Link } from "react-router-dom"; // Import Link for internal navigation
+
 function Footer() {
   const handleRedirect = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
+
   return (
     <footer className={`text-white py-5 ${classes.footer}`}>
       <div className="container">
@@ -16,7 +19,7 @@ function Footer() {
           {/* Logo Section */}
           <div className="col-md-4 text-center">
             <div className={classes.logoPlaceholder}>
-              <img src={logo} alt="" />
+              <img src={logo} alt="Evangadi Logo" />
             </div>
             {/* Icons below the logo */}
             <div className={classes.iconGroup}>
@@ -67,25 +70,25 @@ function Footer() {
             <h5 className={classes.footerTitle}>Useful Link</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="#" className="text-decoration-none text-white">
-                  How it works
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.evangadi.com/legal/terms/"
+                <Link
+                  to="/how-it-works"
                   className="text-decoration-none text-white"
                 >
-                  Terms of Service
-                </a>
+                  How it works
+                </Link>
               </li>
               <li>
-                <a
-                  href="https://www.evangadi.com/legal/privacy/"
+                <Link to="/terms" className="text-decoration-none text-white">
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/privacy-policy"
                   className="text-decoration-none text-white"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
