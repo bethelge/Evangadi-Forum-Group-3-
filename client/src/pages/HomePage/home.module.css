@@ -142,7 +142,7 @@ body {
   background-color: #0056b3;
 }
 
-.pageNumber {
-  font-size: 16px;
-  margin: 0 10px;
+.activePage {
+  background-color: #0056b3;
+  font-weight: bold;
 }

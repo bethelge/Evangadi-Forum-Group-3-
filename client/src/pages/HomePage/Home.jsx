@@ -63,6 +63,15 @@ function Home() {
     setCurrentPage(pageNumber);
   };
 
+  // Generate page number buttons
+  const generatePageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  };
+
   return (
     <>
       <Header />
@@ -129,6 +138,7 @@ function Home() {
 
         {/* Pagination Controls */}
         <div className={classes.pagination}>
+          {/* First Button */}
           <button
             className={`btn ${classes.pageButton}`}
             onClick={() => handlePageChange(1)}
@@ -136,22 +146,21 @@ function Home() {
           >
             First
           </button>
-          <button
-            className={`btn ${classes.pageButton}`}
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
-          <span className={classes.pageNumber}>{currentPage}</span> /{" "}
-          <span>{totalPages}</span>
-          <button
-            className={`btn ${classes.pageButton}`}
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
+
+          {/* Page Numbers */}
+          {generatePageNumbers().map((number) => (
+            <button
+              key={number}
+              className={`btn ${classes.pageButton} ${
+                currentPage === number ? classes.activePage : ""
+              }`}
+              onClick={() => handlePageChange(number)}
+            >
+              {number}
+            </button>
+          ))}
+
+          {/* Last Button */}
           <button
             className={`btn ${classes.pageButton}`}
             onClick={() => handlePageChange(totalPages)}
