@@ -6,6 +6,9 @@ import { FaInstagram } from "react-icons/fa";
 import { RiYoutubeLine } from "react-icons/ri";
 import logo from "../../assets/images/evangadi-logo-footer.png";
 function Footer() {
+  const handleRedirect = (url) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
   return (
     <footer className={`text-white py-5 ${classes.footer}`}>
       <div className="container">
@@ -17,9 +20,45 @@ function Footer() {
             </div>
             {/* Icons below the logo */}
             <div className={classes.iconGroup}>
-              <FaFacebookF className={classes.icon} />
-              <FaInstagram className={classes.icon} />
-              <RiYoutubeLine className={classes.icon} />
+              <div
+                onClick={() =>
+                  handleRedirect(
+                    "https://www.facebook.com/evangaditech?mibextid=ZbWKwL"
+                  )
+                }
+                className={classes.icon}
+                role="button"
+                tabIndex="0"
+                aria-label="Facebook"
+              >
+                <FaFacebookF />
+              </div>
+              <div
+                onClick={() =>
+                  handleRedirect(
+                    "https://www.instagram.com/evangaditech?igsh=MXIwcGc5a2pleG1xbw=="
+                  )
+                }
+                className={classes.icon}
+                role="button"
+                tabIndex="0"
+                aria-label="Instagram"
+              >
+                <FaInstagram />
+              </div>
+              <div
+                onClick={() =>
+                  handleRedirect(
+                    "https://youtube.com/@evangaditech?si=XWgA9_o0FjeJ9JLU"
+                  )
+                }
+                className={classes.icon}
+                role="button"
+                tabIndex="0"
+                aria-label="YouTube"
+              >
+                <RiYoutubeLine />
+              </div>
             </div>
           </div>
 
@@ -33,12 +72,18 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-decoration-none text-white">
+                <a
+                  href="https://www.evangadi.com/legal/terms/"
+                  className="text-decoration-none text-white"
+                >
                   Terms of Service
                 </a>
               </li>
               <li>
-                <a href="#" className="text-decoration-none text-white">
+                <a
+                  href="https://www.evangadi.com/legal/privacy/"
+                  className="text-decoration-none text-white"
+                >
                   Privacy Policy
                 </a>
               </li>
